@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "unistd.h": "c",
+        "keysym.h": "c",
+        "stddef.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
