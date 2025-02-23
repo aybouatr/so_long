@@ -1,6 +1,6 @@
 NAME = so_long
 SRC = srcs/main.c srcs/get_next_line.c srcs/libft0.c srcs/libft1.c srcs/ft_split.c srcs/check_map.c srcs/ft_itoa.c srcs/ft_initialize.c \
-	  srcs/ft_initialize2.c srcs/clean_memory.c srcs/ft_draw.c srcs/ft_mange.c srcs/clean_memory2.c 
+	  srcs/ft_initialize2.c srcs/clean_memory.c srcs/ft_draw.c srcs/ft_mange.c srcs/clean_memory2.c  srcs/ft_initialize3.c srcs/trash_functioms.c
 
 OBJ = $(SRC:.c=.o)
 all: $(NAME)

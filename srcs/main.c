@@ -12,44 +12,13 @@
 
 #include "../includes/so_long.h"
 
-void	print_nbr_step(s_info_img img)
-{
-	char	*str;
-
-	str = ft_itoa(img.count_nbr_step);
-	mlx_put_image_to_window(img.mlx, img.win, img.wall.Wall, 58 * 2, 58 * 0);
-	mlx_string_put(img.mlx, img.win, 30, 30, 0x00FFDD, "N' of steps : ");
-	mlx_string_put(img.mlx, img.win, 120, 30, 0x00FFDD, str);
-	free(str);
-}
-
-int	open_file(char *map)
-{
-	int	fd;
-
-	fd = open(map, O_RDONLY, 0777);
-	if (fd == -1)
-	{
-		ft_putstr_fd("Error file", 1);
-		exit(1);
-	}
-	return (fd);
-}
-
-void	ft_error_map(char **arr)
-{
-	ft_free_arry(arr);
-	ft_putstr_fd("Invalid MAP !\n", 2);
-	exit(1);
-}
-
 int	key_press(int keycode, s_info_img *im)
 {
 	s_info_img	img;
 
 	img = *im;
-	img.last_directions = keycode;
-	if (img.last_directions == 65307)
+	img.las_d = keycode;
+	if (img.las_d == 65307)
 	{
 		clean_memory(im);
 		exit(0);
@@ -71,15 +40,16 @@ int	coin_found(s_info_img *mg)
 
 	i = 0;
 	img = *mg;
-	ret = enamy_found(&img);
 	if (is_finish(img))
 	{
 		clean_memory(mg);
 		exit(1);
 	}
+	ret = enamy_found(&img);
 	while (img.arr_coin[i] != NULL)
 	{
-		if (img.player.pos_player_x == img.arr_coin[i]->x_pos && img.player.pos_player_y == img.arr_coin[i]->y_pos)
+		if (img.player.pos_player_x == img.arr_coin[i]->x_pos
+			&& img.player.pos_player_y == img.arr_coin[i]->y_pos)
 			img.arr_coin[i]->is_token = 1;
 		manage_positions_coin(img, img.arr_coin[i]);
 		i++;

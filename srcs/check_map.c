@@ -34,10 +34,11 @@ void	check_map(char *data)
 {
 	char	**arr;
 
-	int(i), (j), (len_line), (x);
-	i = 0;
+	int (i), (j), (len_line), (x);
+	i = -1;
 	arr = ft_split(data, '\n');
-	while (arr && arr[i])
+	free(data);
+	while (arr && arr[++i])
 	{
 		j = -1;
 		while (arr[i][++j])
@@ -46,14 +47,13 @@ void	check_map(char *data)
 				|| arr[0][j] != '1' || ft_strlen(arr[0]) != ft_strlen(arr[i]))
 				ft_error_map(arr);
 		}
-		i++;
 	}
 	x = j;
 	j = 0;
-	while (arr[i - 1][j])
+	while (arr && arr[i - 1][j])
 	{
 		if (arr[i - 1][j] != '1' || (i - 1) != count_newline(data) || 1920 < (x
-				* 58) || 1080 < (i * 58))
+			* 58) || 1080 < (i * 58))
 			ft_error_map(arr);
 		j++;
 	}
@@ -64,12 +64,12 @@ components_map	count_nbr_component(char **arr, int i, int j)
 {
 	components_map	cmpnt;
 
-	j = 0;
+	j = -1;
 	assign_start(&cmpnt);
-	while (arr && arr[j])
+	while (arr && arr[++j])
 	{
-		i = 0;
-		while (arr[j][i] != '\0')
+		i = -1;
+		while (arr[j][++i] != '\0')
 		{
 			if (arr[j][i] == 'E')
 				cmpnt.exit++;
@@ -83,9 +83,7 @@ components_map	count_nbr_component(char **arr, int i, int j)
 				cmpnt.collectible++;
 			else if (arr[j][i] != '0' && arr[j][i] != '1' && arr[j][i] != 'N')
 				ft_error_map(arr);
-			i++;
 		}
-		j++;
 	}
 	return (cmpnt);
 }
@@ -124,9 +122,9 @@ void	floodfill(char **arr, int x, int y)
 		|| arr[x][y] == '#' || arr[x][y] == 'N')
 		return ;
 	arr[x][y] = '#';
-	floodfill(arr, x + 1, y); // Left
-	floodfill(arr, x - 1, y); // Right
-	floodfill(arr, x, y + 1); // Up
-	floodfill(arr, x, y - 1); // Down
+	floodfill(arr, x + 1, y);
+	floodfill(arr, x - 1, y);
+	floodfill(arr, x, y + 1);
+	floodfill(arr, x, y - 1);
 	return ;
 }

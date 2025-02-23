@@ -12,12 +12,14 @@
 
 #include "../includes/so_long.h"
 
-void	drawing_of_pixels(s_info_img img, int x_p, int y_p)
+void	d_pix(s_info_img img, int x_p, int y_p)
 {
 	int	x;
 	int	y;
 
 	x = 0;
+	x_p *= 58;
+	y_p *= 58;
 	while (x < 58)
 	{
 		y = 0;
@@ -36,7 +38,7 @@ void	drawing_of_pixels(s_info_img img, int x_p, int y_p)
 	}
 }
 
-void	drawing_backround_player(s_info_img img, int x_p, int y_p)
+void	d_bg_p(s_info_img img, int x_p, int y_p)
 {
 	int	x;
 	int	y;
@@ -61,7 +63,7 @@ void	drawing_component_game(s_info_img img, int derict)
 	int	y;
 
 	x = 0;
-	img.last_directions = derict;
+	img.las_d = derict;
 	mlx_put_image_to_window(img.mlx, img.win, img.bkrd.backround, 0, 0);
 	while (img.map[x] != NULL)
 	{
@@ -74,7 +76,7 @@ void	drawing_component_game(s_info_img img, int derict)
 			else if (img.map[x][y] == 'P')
 			{
 				img = specifique_img_put_player(img);
-				drawing_of_pixels(img, x * 58, y * 58);
+				d_pix(img, x, y);
 			}
 			y++;
 		}

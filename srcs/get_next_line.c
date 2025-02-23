@@ -12,34 +12,6 @@
 
 #include "../includes/so_long.h"
 
-char	*ftt_strjoin(char *s1, char *s2)
-{
-	int		i;
-	int		j;
-	char	*new;
-
-	i = 0;
-	j = 0;
-	if (!s1)
-		return (ft_strdup(s2));
-	new = (char *)malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!new)
-		return (NULL);
-	while (s1[i])
-	{
-		new[i] = s1[i];
-		i++;
-	}
-	while (s2[j])
-	{
-		new[i] = s2[j];
-		i++;
-		j++;
-	}
-	new[i] = '\0';
-	return (free(s1), new);
-}
-
 int	ftt_strchr(const char *str, char search_str)
 {
 	if (!str)
@@ -128,7 +100,6 @@ char	*get_read_str(int fd, char *s_str)
 			return (free(buffer), NULL);
 		temp = s_str;
 		s_str = ftt_strjoin(s_str, buffer);
-		//free(temp);
 		if (!s_str)
 			return (free(buffer), NULL);
 		free(buffer);
