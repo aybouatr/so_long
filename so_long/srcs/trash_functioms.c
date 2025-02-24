@@ -36,9 +36,19 @@ int	open_file(char *map)
 	return (fd);
 }
 
-void	ft_error_map(char **arr)
+int close_window(s_info_img *img)
+{
+	clean_memory(img);
+	exit(0);
+    return 0;
+}
+
+void	ft_error_map(char **arr, char *temp)
 {
 	ft_free_arry(arr);
+	if (temp)
+		free (temp);
+	ft_putstr_fd("Error\n", 1);
 	ft_putstr_fd("Invalid MAP !\n", 2);
 	exit(1);
 }

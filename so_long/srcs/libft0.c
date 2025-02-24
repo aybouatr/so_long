@@ -15,10 +15,10 @@
 int	is_finish(s_info_img img)
 {
 	img.nbr_coin = count_what_do_you_want(img.map, 'C');
-	print_nbr_step(img);
 	if (img.nbr_coin == 0)
 		mlx_put_image_to_window(img.mlx, img.win, img.excit.exict,
-				img.excit.pos_y * 58, img.excit.pos_x * 58);
+			img.excit.pos_y * 58, img.excit.pos_x * 58);
+	print_nbr_step(img);
 	if (img.nbr_coin == 0 && img.player.pos_player_x == img.excit.pos_x
 		&& img.player.pos_player_y == img.excit.pos_y)
 		return (1);
@@ -53,13 +53,14 @@ size_t	ft_strlen(const char *str)
 	return (e);
 }
 
-void	ft_putchar_fd(char c, int fd)
+ssize_t	ft_putchar_fd(char c, int fd)
 {
 	ssize_t	ret;
 
 	ret = 0;
 	if (fd >= 0)
 		ret = write(fd, &c, 1);
+	return (ret);
 }
 
 void	ft_putstr_fd(char *s, int fd)

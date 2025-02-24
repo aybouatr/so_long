@@ -40,16 +40,16 @@ int	is_found_e(char **arr)
 	return (0);
 }
 
-s_pos_player_and_w_h	get_positions_player_wie_and_hei_windo_and_number_coin(char **arr)
+s_pos_player_and_w_h	get_positions_player_and_nother_info(char **arr)
 {
 	s_pos_player_and_w_h	info;
 
-	info.heigth = 0;
+	info.heigth = -1;
 	info.nb_coin = 0;
-	while (arr[info.heigth] != NULL)
+	while (arr[++info.heigth] != NULL)
 	{
-		info.wiedth = 0;
-		while (arr[info.heigth][info.wiedth] != '\0')
+		info.wiedth = -1;
+		while (arr[info.heigth][++info.wiedth] != '\0')
 		{
 			if (arr[info.heigth][info.wiedth] == 'P')
 			{
@@ -63,41 +63,38 @@ s_pos_player_and_w_h	get_positions_player_wie_and_hei_windo_and_number_coin(char
 			}
 			if (arr[info.heigth][info.wiedth] == 'C')
 				info.nb_coin++;
-			info.wiedth++;
 		}
-		info.heigth++;
 	}
 	return (info);
 }
 
 s_info_player	initialize_player(void *mlx, int *status_error)
 {
-	s_info_player	player;
+	s_info_player	p;
 	char			*path;
 
-	player.x = 58;
-	player.y = 150;
+	p.x = 58;
+	p.y = 150;
 	path = "/home/aybouatr/Desktop/so_long/img/img_player/back.xpm";
-	player.img_back = mlx_xpm_file_to_image(mlx, path, &player.y, &player.x);
-	player.xpm_back = (int *)mlx_get_data_addr(player.img_back, &(int){0},
-			&(int){0}, &(int){0});
+	p.img_back = mlx_xpm_file_to_image(mlx, path, &p.y, &p.x);
+	p.xpm_back = (unsigned int *)mlx_get_data_addr(p.img_back, &(int){0}, &(int){0},
+			&(int){0});
 	path = "/home/aybouatr/Desktop/so_long/img/img_player/rigth.xpm";
-	player.img_rigth = mlx_xpm_file_to_image(mlx, path, &player.y, &player.x);
-	player.xpm_rigth = (int *)mlx_get_data_addr(player.img_rigth, &(int){0},
-			&(int){0}, &(int){0});
+	p.img_rigth = mlx_xpm_file_to_image(mlx, path, &p.y, &p.x);
+	p.xpm_rigth = (unsigned int *)mlx_get_data_addr(p.img_rigth, &(int){0}, &(int){0},
+			&(int){0});
 	path = "/home/aybouatr/Desktop/so_long/img/img_player/frond.xpm";
-	player.img_frond = mlx_xpm_file_to_image(mlx, path, &player.y, &player.x);
-	player.xpm_frond = (int *)mlx_get_data_addr(player.img_frond, &(int){0},
-			&(int){0}, &(int){0});
+	p.img_frond = mlx_xpm_file_to_image(mlx, path, &p.y, &p.x);
+	p.xpm_frond = (unsigned int *)mlx_get_data_addr(p.img_frond, &(int){0}, &(int){0},
+			&(int){0});
 	path = "/home/aybouatr/Desktop/so_long/img/img_player/left.xpm";
-	player.img_left = mlx_xpm_file_to_image(mlx, path, &player.y, &player.x);
-	player.xpm_left = (int *)mlx_get_data_addr(player.img_left, &(int){0},
-			&(int){0}, &(int){0});
-	player.xpm_current_put = player.xpm_frond;
-	if (!player.xpm_left || !player.xpm_frond || !player.xpm_rigth
-		|| !player.xpm_back)
+	p.img_left = mlx_xpm_file_to_image(mlx, path, &p.y, &p.x);
+	p.xpm_left = (unsigned int *)mlx_get_data_addr(p.img_left, &(int){0}, &(int){0},
+			&(int){0});
+	p.xpm_current_put = p.xpm_frond;
+	if (!p.xpm_left || !p.xpm_frond || !p.xpm_rigth || !p.xpm_back)
 		*status_error = -1;
-	return (player);
+	return (p);
 }
 
 s_info_bg	initialize_bg(char *mlx, int *error)
