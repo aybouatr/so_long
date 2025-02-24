@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-int	is_finish(s_info_img img)
+int	is_finish(t_info_img img)
 {
 	img.nbr_coin = count_what_do_you_want(img.map, 'C');
 	if (img.nbr_coin == 0)

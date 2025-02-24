@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-void	d_pix(s_info_img img, int x_p, int y_p)
+void	d_pix(t_info_img img, int x_p, int y_p)
 {
 	int	x;
 	int	y;
@@ -38,7 +38,7 @@ void	d_pix(s_info_img img, int x_p, int y_p)
 	}
 }
 
-void	d_bg_p(s_info_img img, int x_p, int y_p)
+void	d_bg_p(t_info_img img, int x_p, int y_p)
 {
 	int	x;
 	int	y;
@@ -57,7 +57,7 @@ void	d_bg_p(s_info_img img, int x_p, int y_p)
 	}
 }
 
-void	drawing_component_game(s_info_img img, int derict)
+void	drawing_component_game(t_info_img img, int derict)
 {
 	int	x;
 	int	y;
@@ -71,7 +71,7 @@ void	drawing_component_game(s_info_img img, int derict)
 		while (img.map[x][y] != '\0')
 		{
 			if (img.map[x][y] == '1')
-				mlx_put_image_to_window(img.mlx, img.win, img.wall.Wall, 58 * y,
+				mlx_put_image_to_window(img.mlx, img.win, img.wall.wall, 58 * y,
 					58 * x);
 			else if (img.map[x][y] == 'P')
 			{

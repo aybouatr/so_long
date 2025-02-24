@@ -28,7 +28,7 @@ void	ft_free_arry(char **arr)
 	}
 }
 
-void	ft_free_struct_coin(s_info_coin *coin, void *mlx)
+void	ft_free_struct_coin(t_info_coin *coin, void *mlx)
 {
 	int	i;
 
@@ -43,7 +43,7 @@ void	ft_free_struct_coin(s_info_coin *coin, void *mlx)
 		free(coin->arr);
 }
 
-void	ft_free_struct_to_array_coin(s_info_coin **arr_coin, void *mlx)
+void	ft_free_struct_to_array_coin(t_info_coin **arr_coin, void *mlx)
 {
 	int	i;
 

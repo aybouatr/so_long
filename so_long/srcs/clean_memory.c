@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-void	ft_free_struct_enamy(s_info_enamy *enamy, void *mlx)
+void	ft_free_struct_enamy(t_info_enamy *enamy, void *mlx)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ void	ft_free_struct_enamy(s_info_enamy *enamy, void *mlx)
 		free(enamy->arr);
 }
 
-void	ft_free_struct_to_array_enamy(s_info_enamy **arr_enamy, void *mlx)
+void	ft_free_struct_to_array_enamy(t_info_enamy **arr_enamy, void *mlx)
 {
 	int	i;
 
@@ -42,7 +42,7 @@ void	ft_free_struct_to_array_enamy(s_info_enamy **arr_enamy, void *mlx)
 		free(arr_enamy);
 }
 
-void	ft_free_struct_player(s_info_player player, void *mlx)
+void	ft_free_struct_player(t_info_player player, void *mlx)
 {
 	if (player.img_frond)
 		mlx_destroy_image(mlx, player.img_frond);
@@ -54,7 +54,7 @@ void	ft_free_struct_player(s_info_player player, void *mlx)
 		mlx_destroy_image(mlx, player.img_left);
 }
 
-void	clean_memory(s_info_img *img)
+void	clean_memory(t_info_img *img)
 {
 	ft_free_arry(img->map);
 	ft_free_struct_to_array_coin(img->arr_coin, img->mlx);
@@ -62,8 +62,8 @@ void	clean_memory(s_info_img *img)
 	ft_free_struct_player(img->player, img->mlx);
 	if (img->excit.exict)
 		mlx_destroy_image(img->mlx, img->excit.exict);
-	if (img->wall.Wall)
-		mlx_destroy_image(img->mlx, img->wall.Wall);
+	if (img->wall.wall)
+		mlx_destroy_image(img->mlx, img->wall.wall);
 	if (img->bkrd.backround)
 		mlx_destroy_image(img->mlx, img->bkrd.backround);
 	if (img->win && img->mlx)

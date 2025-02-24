@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-void	manage_positions_coin(s_info_img img, s_info_coin *coin)
+void	manage_positions_coin(t_info_img img, t_info_coin *coin)
 {
 	static int	j;
 	static int	i;
@@ -28,7 +28,7 @@ void	manage_positions_coin(s_info_img img, s_info_coin *coin)
 		i = 0;
 }
 
-void	manage_positions_enamy(s_info_img img, s_info_enamy *enamy)
+void	manage_positions_enamy(t_info_img img, t_info_enamy *enamy)
 {
 	static int	j;
 	static int	i;
@@ -41,7 +41,7 @@ void	manage_positions_enamy(s_info_img img, s_info_enamy *enamy)
 		i = 0;
 }
 
-s_info_img	specifique_direction(s_info_img img)
+t_info_img	specifique_direction(t_info_img img)
 {
 	if (img.las_d == 'w' && img.map[img.player.pos_player_x
 			- 1][img.player.pos_player_y] != '1')
@@ -70,7 +70,7 @@ s_info_img	specifique_direction(s_info_img img)
 	return (manage_img(img));
 }
 
-s_info_img	manage_img(s_info_img img)
+t_info_img	manage_img(t_info_img img)
 {
 	d_bg_p(img, img.player.pos_player_x * 58, img.player.pos_player_y * 58);
 	if (img.las_d == 'w' && img.map[img.player.pos_player_x
@@ -99,7 +99,7 @@ s_info_img	manage_img(s_info_img img)
 	return (d_pix(img, img.player.pos_player_x, img.player.pos_player_y), img);
 }
 
-s_info_img	specifique_img_put_player(s_info_img img)
+t_info_img	specifique_img_put_player(t_info_img img)
 {
 	if (img.las_d == 'd')
 		img.player.xpm_current_put = img.player.xpm_left;

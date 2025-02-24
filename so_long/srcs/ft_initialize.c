@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-void	initialize_enamy_help(s_info_enamy *e, void *mlx, int *error)
+void	initialize_enamy_help(t_info_enamy *e, void *mlx, int *error)
 {
 	int	i;
 
@@ -41,9 +41,9 @@ void	initialize_enamy_help(s_info_enamy *e, void *mlx, int *error)
 			*error = -1;
 }
 
-s_info_exict	initialize_excit(char *mlx, int *error)
+t_info_exict	initialize_excit(char *mlx, int *error)
 {
-	s_info_exict	exci;
+	t_info_exict	exci;
 	char			*path;
 
 	exci.x_ex = 58;
@@ -55,16 +55,16 @@ s_info_exict	initialize_excit(char *mlx, int *error)
 	return (exci);
 }
 
-s_info_wall	initialize_wall(char *mlx, int *error)
+t_info_wall	initialize_wall(char *mlx, int *error)
 {
-	s_info_wall	wall;
+	t_info_wall	wall;
 	char		*path;
 
 	wall.x_wall = 58;
 	wall.y_wall = 58;
 	path = "/home/aybouatr/Desktop/so_long/img/img_wall/stone.xpm";
-	wall.Wall = mlx_xpm_file_to_image(mlx, path, &wall.x_wall, &wall.y_wall);
-	if (!wall.Wall)
+	wall.wall = mlx_xpm_file_to_image(mlx, path, &wall.x_wall, &wall.y_wall);
+	if (!wall.wall)
 		*error = -1;
 	return (wall);
 }
@@ -91,9 +91,9 @@ int	count_what_do_you_want(char **arr, char c)
 	return (counter);
 }
 
-void	initialize(s_info_img *img, char **arr)
+void	initialize(t_info_img *img, char **arr)
 {
-	s_pos_player_and_w_h	info;
+	t_pos_player_and_w_h	info;
 
 	info = get_positions_player_and_nother_info(arr);
 	img->map = arr;

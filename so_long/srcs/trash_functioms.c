@@ -12,12 +12,12 @@
 
 #include "../includes/so_long.h"
 
-void	print_nbr_step(s_info_img img)
+void	print_nbr_step(t_info_img img)
 {
 	char	*str;
 
 	str = ft_itoa(img.count_nbr_step);
-	mlx_put_image_to_window(img.mlx, img.win, img.wall.Wall, 58 * 2, 58 * 0);
+	mlx_put_image_to_window(img.mlx, img.win, img.wall.wall, 58 * 2, 58 * 0);
 	mlx_string_put(img.mlx, img.win, 30, 30, 0x00FFDD, "N' of steps : ");
 	mlx_string_put(img.mlx, img.win, 120, 30, 0x00FFDD, str);
 	free(str);
@@ -36,11 +36,11 @@ int	open_file(char *map)
 	return (fd);
 }
 
-int close_window(s_info_img *img)
+int	close_window(t_info_img *img)
 {
 	clean_memory(img);
-	exit(0);
-    return 0;
+	exit (0);
+	return (0);
 }
 
 void	ft_error_map(char **arr, char *temp)

@@ -12,9 +12,9 @@
 
 #include "../includes/so_long.h"
 
-int	key_press(int keycode, s_info_img *im)
+int	key_press(int keycode, t_info_img *im)
 {
-	s_info_img	img;
+	t_info_img	img;
 
 	img = *im;
 	img.las_d = keycode;
@@ -32,10 +32,10 @@ int	key_press(int keycode, s_info_img *im)
 	return (0);
 }
 
-int	coin_found(s_info_img *mg)
+int	coin_found(t_info_img *mg)
 {
 	int			i;
-	s_info_img	img;
+	t_info_img	img;
 
 	i = 0;
 	img = *mg;
@@ -56,10 +56,10 @@ int	coin_found(s_info_img *mg)
 	return (0);
 }
 
-int	enamy_found(s_info_img *mg)
+int	enamy_found(t_info_img *mg)
 {
 	int			i;
-	s_info_img	img;
+	t_info_img	img;
 
 	i = 0;
 	img = *mg;
@@ -79,7 +79,7 @@ int	enamy_found(s_info_img *mg)
 
 void	preprocessing_component_game(char *line)
 {
-	s_info_img	img;
+	t_info_img	img;
 	char		**arr;
 
 	arr = NULL;
@@ -99,14 +99,13 @@ void	preprocessing_component_game(char *line)
 	mlx_loop_hook(img.mlx, (int (*)(void *))coin_found, &img);
 	mlx_key_hook(img.win, key_press, &img);
 	mlx_hook(img.win, 33, 0, close_window, &img);
-
 	mlx_loop(img.mlx);
 }
 
 int	main(int ac, char *av[])
 {
 	char	*line;
-	int 	j;
+	int		j;
 	int		i;
 
 	j = 0;
@@ -119,7 +118,7 @@ int	main(int ac, char *av[])
 	if (ac == 2)
 	{
 		line = load_date_from_map(av[1]);
-		check_map(line,i,j);
+		check_map(line, i, j);
 		preprocessing_component_game(line);
 	}
 	else

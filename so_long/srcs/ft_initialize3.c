@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-void	initialize_coin_help(s_info_coin *coin, void *mlx, int *error)
+void	initialize_coin_help(t_info_coin *coin, void *mlx, int *error)
 {
 	int		i;
 
@@ -39,13 +39,13 @@ void	initialize_coin_help(s_info_coin *coin, void *mlx, int *error)
 			*error = -1;
 }
 
-s_info_coin	*initialize_coin(char *mlx, int x, int y)
+t_info_coin	*initialize_coin(char *mlx, int x, int y)
 {
-	s_info_coin	*coin;
+	t_info_coin	*coin;
 	int			error;
 
 	error = 0;
-	coin = malloc(sizeof(s_info_coin));
+	coin = malloc(sizeof(t_info_coin));
 	if (!coin)
 		return (NULL);
 	coin->arr = malloc(sizeof(void *) * 9);
@@ -62,14 +62,14 @@ s_info_coin	*initialize_coin(char *mlx, int x, int y)
 	return (coin);
 }
 
-s_info_coin	**initialize_all_coin(char *mlx, char **arr, int nbr_c, int *e)
+t_info_coin	**initialize_all_coin(char *mlx, char **arr, int nbr_c, int *e)
 {
-	s_info_coin	**arr_coin;
+	t_info_coin	**arr_coin;
 
 	int (i), (x), (y);
 	x = -1;
 	i = -1;
-	arr_coin = malloc(sizeof(s_info_coin *) * (nbr_c + 1));
+	arr_coin = malloc(sizeof(t_info_coin *) * (nbr_c + 1));
 	if (!arr_coin)
 		*e = -1;
 	while (arr_coin && arr[++x] != NULL)
@@ -89,13 +89,13 @@ s_info_coin	**initialize_all_coin(char *mlx, char **arr, int nbr_c, int *e)
 	return (arr_coin);
 }
 
-s_info_enamy	*initialize_enamy(char *mlx, int x, int y)
+t_info_enamy	*initialize_enamy(char *mlx, int x, int y)
 {
-	s_info_enamy	*enamy;
+	t_info_enamy	*enamy;
 	int				error;
 
 	error = 0;
-	enamy = malloc(sizeof(s_info_enamy));
+	enamy = malloc(sizeof(t_info_enamy));
 	if (!enamy)
 		return (NULL);
 	enamy->arr = malloc(sizeof(void *) * 10);
@@ -111,16 +111,16 @@ s_info_enamy	*initialize_enamy(char *mlx, int x, int y)
 	return (enamy);
 }
 
-s_info_enamy	**initialize_all_enamys(char *mlx, char **arr, int n, int *e)
+t_info_enamy	**initialize_all_enamys(char *mlx, char **arr, int n, int *e)
 {
-	s_info_enamy	**arr_enamy;
+	t_info_enamy	**arr_enamy;
 	int				i;
 	int				x;
 	int				y;
 
 	x = -1;
 	i = -1;
-	arr_enamy = malloc(sizeof(s_info_enamy *) * (n + 1));
+	arr_enamy = malloc(sizeof(t_info_enamy *) * (n + 1));
 	if (!arr_enamy)
 		*e = -1;
 	while (arr_enamy && arr[++x] != NULL)

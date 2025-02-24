@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-void	assign_start(components_map *cmpnt)
+void	assign_start(t_components_map *cmpnt)
 {
 	cmpnt->wall = 0;
 	cmpnt->exit = 0;
@@ -40,9 +40,9 @@ int	is_found_e(char **arr)
 	return (0);
 }
 
-s_pos_player_and_w_h	get_positions_player_and_nother_info(char **arr)
+t_pos_player_and_w_h	get_positions_player_and_nother_info(char **arr)
 {
-	s_pos_player_and_w_h	info;
+	t_pos_player_and_w_h	info;
 
 	info.heigth = -1;
 	info.nb_coin = 0;
@@ -68,38 +68,38 @@ s_pos_player_and_w_h	get_positions_player_and_nother_info(char **arr)
 	return (info);
 }
 
-s_info_player	initialize_player(void *mlx, int *status_error)
+t_info_player	initialize_player(void *mlx, int *status_error)
 {
-	s_info_player	p;
+	t_info_player	p;
 	char			*path;
 
 	p.x = 58;
 	p.y = 150;
 	path = "/home/aybouatr/Desktop/so_long/img/img_player/back.xpm";
 	p.img_back = mlx_xpm_file_to_image(mlx, path, &p.y, &p.x);
-	p.xpm_back = (unsigned int *)mlx_get_data_addr(p.img_back, &(int){0}, &(int){0},
-			&(int){0});
+	p.xpm_back = (unsigned int *)mlx_get_data_addr(p.img_back, &(int){0},
+			&(int){0}, &(int){0});
 	path = "/home/aybouatr/Desktop/so_long/img/img_player/rigth.xpm";
 	p.img_rigth = mlx_xpm_file_to_image(mlx, path, &p.y, &p.x);
-	p.xpm_rigth = (unsigned int *)mlx_get_data_addr(p.img_rigth, &(int){0}, &(int){0},
-			&(int){0});
+	p.xpm_rigth = (unsigned int *)mlx_get_data_addr(p.img_rigth, &(int){0},
+			&(int){0}, &(int){0});
 	path = "/home/aybouatr/Desktop/so_long/img/img_player/frond.xpm";
 	p.img_frond = mlx_xpm_file_to_image(mlx, path, &p.y, &p.x);
-	p.xpm_frond = (unsigned int *)mlx_get_data_addr(p.img_frond, &(int){0}, &(int){0},
-			&(int){0});
+	p.xpm_frond = (unsigned int *)mlx_get_data_addr(p.img_frond, &(int){0},
+			&(int){0}, &(int){0});
 	path = "/home/aybouatr/Desktop/so_long/img/img_player/left.xpm";
 	p.img_left = mlx_xpm_file_to_image(mlx, path, &p.y, &p.x);
-	p.xpm_left = (unsigned int *)mlx_get_data_addr(p.img_left, &(int){0}, &(int){0},
-			&(int){0});
+	p.xpm_left = (unsigned int *)mlx_get_data_addr(p.img_left, &(int){0},
+			&(int){0}, &(int){0});
 	p.xpm_current_put = p.xpm_frond;
 	if (!p.xpm_left || !p.xpm_frond || !p.xpm_rigth || !p.xpm_back)
 		*status_error = -1;
 	return (p);
 }
 
-s_info_bg	initialize_bg(char *mlx, int *error)
+t_info_bg	initialize_bg(char *mlx, int *error)
 {
-	s_info_bg	bg;
+	t_info_bg	bg;
 	char		*path;
 
 	bg.x_bg = 0;

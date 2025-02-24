@@ -12,28 +12,28 @@
 
 #include "../includes/so_long.h"
 
-void	check_map_help(char **arr,char* data)
+void	check_map_help(char **arr, char *data)
 {
-	int				i;
-	int				j;
-	components_map	component;
+	int					i;
+	int					j;
+	t_components_map	component;
 
 	i = 0;
 	j = 0;
-	component = count_nbr_component(arr, i, j,data);
+	component = count_nbr_component(arr, i, j, data);
 	if (component.exit != 1 || component.start_pos != 1
 		|| component.collectible < 1)
-		ft_error_map(arr,data);
+		ft_error_map(arr, data);
 	floodfill(arr, component.x, component.y);
 	if (is_found_e(arr))
-		ft_error_map(arr,data);
+		ft_error_map(arr, data);
 	ft_free_arry(arr);
 }
 
-void	check_map(char *data,int i,int j)
+void	check_map(char *data, int i, int j)
 {
 	char	**arr;
-	int		 x;
+	int		x;
 
 	i = -1;
 	arr = ft_split(data, '\n');
@@ -44,7 +44,7 @@ void	check_map(char *data,int i,int j)
 		{
 			if (arr[i][0] != '1' || arr[i][ft_strlen(arr[i]) - 1] != '1'
 				|| arr[0][j] != '1' || ft_strlen(arr[0]) != ft_strlen(arr[i]))
-				ft_error_map(arr,data);
+				ft_error_map(arr, data);
 		}
 	}
 	x = j;
@@ -53,15 +53,15 @@ void	check_map(char *data,int i,int j)
 	{
 		if (arr[i - 1][j] != '1' || (i - 1) != count_newline(data) || 1920 < (x
 			* 58) || 1080 < (i * 58))
-				ft_error_map(arr,data);
+			ft_error_map(arr, data);
 		j++;
 	}
-	check_map_help(arr,data);
+	check_map_help(arr, data);
 }
 
-components_map	count_nbr_component(char **arr, int i, int j,char* temp)
+t_components_map	count_nbr_component(char **arr, int i, int j, char *temp)
 {
-	components_map	cmpnt;
+	t_components_map	cmpnt;
 
 	j = -1;
 	assign_start(&cmpnt);
@@ -81,7 +81,7 @@ components_map	count_nbr_component(char **arr, int i, int j,char* temp)
 			else if (arr[j][i] == 'C')
 				cmpnt.collectible++;
 			else if (arr[j][i] != '0' && arr[j][i] != '1' && arr[j][i] != 'N')
-				ft_error_map(arr,temp);
+				ft_error_map(arr, temp);
 		}
 	}
 	return (cmpnt);
