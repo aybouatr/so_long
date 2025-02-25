@@ -12,7 +12,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ)  -L./includes -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -L./includes -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	$(CC) $(CFLAGS) -L./includes -I/usr/include -Imlx_linux  -c $< -o $@
 
 clean:
 	rm -rf $(OBJ)
@@ -22,4 +22,4 @@ fclean: clean
 
 re: fclean all
 
-..PHONY: all fclean clean re
+.PHONY: all fclean clean re

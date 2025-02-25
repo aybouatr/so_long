@@ -112,7 +112,7 @@ int	main(int ac, char *av[])
 	i = 0;
 	if (ac == 2 && ft_strncmp(&av[1][ft_strlen(av[1]) - 4], ".ber", 4))
 	{
-		ft_putstr_fd("invalid map\n", 1);
+		ft_putstr_fd("invalid exention file\n", 1);
 		return (-1);
 	}
 	if (ac == 2)
@@ -123,7 +123,8 @@ int	main(int ac, char *av[])
 	}
 	else
 	{
-		ft_putstr_fd("Usage: ./your_program <map_file>\n", 1);
+		ft_putstr_fd("Error\n", STDERR_FILENO);
+		ft_putstr_fd("please fix number argument !\n", STDOUT_FILENO);
 		return (1);
 	}
 	return (0);
