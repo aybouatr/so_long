@@ -72,30 +72,30 @@ t_info_img	specifique_direction(t_info_img img)
 
 t_info_img	manage_img(t_info_img img)
 {
-	d_bg_p(img, img.player.pos_player_x * 58, img.player.pos_player_y * 58);
 	if (img.las_d == 'w' && img.map[img.player.pos_player_x
 			- 1][img.player.pos_player_y] != '1')
 	{
 		img.player.pos_player_x--;
+		img.count_nbr_step++;
 	}
 	else if (img.las_d == 'd'
 		&& img.map[img.player.pos_player_x][img.player.pos_player_y + 1] != '1')
 	{
 		img.player.pos_player_y++;
+		img.count_nbr_step++;
 	}
 	else if (img.las_d == 's'
 		&& img.map[img.player.pos_player_x + 1][img.player.pos_player_y] != '1')
 	{
 		img.player.pos_player_x++;
+		img.count_nbr_step++;
 	}
 	else if (img.las_d == 'a'
 		&& img.map[img.player.pos_player_x][img.player.pos_player_y - 1] != '1')
 	{
 		img.player.pos_player_y--;
-	}
-	if (img.las_d == 'a' || img.las_d == 's' || img.las_d == 'd'
-		|| img.las_d == 'w')
 		img.count_nbr_step++;
+	}
 	return (d_pix(img, img.player.pos_player_x, img.player.pos_player_y), img);
 }
 

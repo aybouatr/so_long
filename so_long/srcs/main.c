@@ -27,6 +27,7 @@ int	key_press(int keycode, t_info_img *im)
 	{
 		*im = manage_img(img);
 		img = specifique_img_put_player(img);
+		d_bg_p(img, img.player.pos_player_x * 58, img.player.pos_player_y * 58);
 		*im = specifique_direction(img);
 	}
 	return (0);
@@ -98,7 +99,7 @@ void	preprocessing_component_game(char *line)
 	drawing_component_game(img, 's');
 	mlx_loop_hook(img.mlx, (int (*)(void *))coin_found, &img);
 	mlx_key_hook(img.win, key_press, &img);
-	mlx_hook(img.win, 33, 0, close_window, &img);
+	mlx_hook(img.win, 17, 0, close_window, &img);
 	mlx_loop(img.mlx);
 }
 
@@ -110,10 +111,11 @@ int	main(int ac, char *av[])
 
 	j = 0;
 	i = 0;
-	if (ac == 2 && ft_strncmp(&av[1][ft_strlen(av[1]) - 4], ".ber", 4))
+	if ((ac == 2 && ft_strncmp(&av[1][ft_strlen(av[1]) - 4], ".ber", 4))
+		|| ft_strlen(av[1]) <= 4)
 	{
-		ft_putstr_fd("invalid exention file\n", 1);
-		return (-1);
+		ft_putstr_fd("invalid exention file\n", STDOUT_FILENO);
+		return (1);
 	}
 	if (ac == 2)
 	{
